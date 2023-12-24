@@ -1,0 +1,14 @@
+/home/sagarbandkar/Sagar/Code/LeetCode/bin/Debug/net8.0/LeetCode
+/home/sagarbandkar/Sagar/Code/LeetCode/bin/Debug/net8.0/LeetCode.deps.json
+/home/sagarbandkar/Sagar/Code/LeetCode/bin/Debug/net8.0/LeetCode.runtimeconfig.json
+/home/sagarbandkar/Sagar/Code/LeetCode/bin/Debug/net8.0/LeetCode.dll
+/home/sagarbandkar/Sagar/Code/LeetCode/bin/Debug/net8.0/LeetCode.pdb
+/home/sagarbandkar/Sagar/Code/LeetCode/obj/Debug/net8.0/LeetCode.GeneratedMSBuildEditorConfig.editorconfig
+/home/sagarbandkar/Sagar/Code/LeetCode/obj/Debug/net8.0/LeetCode.AssemblyInfoInputs.cache
+/home/sagarbandkar/Sagar/Code/LeetCode/obj/Debug/net8.0/LeetCode.AssemblyInfo.cs
+/home/sagarbandkar/Sagar/Code/LeetCode/obj/Debug/net8.0/LeetCode.csproj.CoreCompileInputs.cache
+/home/sagarbandkar/Sagar/Code/LeetCode/obj/Debug/net8.0/LeetCode.dll
+/home/sagarbandkar/Sagar/Code/LeetCode/obj/Debug/net8.0/refint/LeetCode.dll
+/home/sagarbandkar/Sagar/Code/LeetCode/obj/Debug/net8.0/LeetCode.pdb
+/home/sagarbandkar/Sagar/Code/LeetCode/obj/Debug/net8.0/LeetCode.genruntimeconfig.cache
+/home/sagarbandkar/Sagar/Code/LeetCode/obj/Debug/net8.0/ref/LeetCode.dll
