@@ -3,29 +3,20 @@ using System.Collections.Generic;
 
 class Program
 {
-    public static int GetWinner(int[] arr, int k)
+    public static double AngleClock(int hour, int minutes)
     {
-        int res = arr[0];
-        int cnt = 0;
+        float h = (hour % 12 + (float)minutes / 60) * 30;
+        float m = minutes * 6;
 
-        for (int i = 1; i < arr.Length; i++)
-        {
-            if (arr[i] > res)
-            {
-                res = arr[i];
-                cnt = 0;
-            }
-            cnt++;
+        float angle = Math.Abs(h - m);
+        if (angle > 180) angle = 360 - angle;
 
-            if (cnt == k) break;
-        }
-
-        return res;
+        return angle;
     }
     public static void Main(string[] args)
     {
-        int[] arr = { 2, 1, 3, 5, 4, 6, 7 };
-        int k = 2;
-        Console.WriteLine(GetWinner(arr, k));
+        int hour = 12;
+        int minutes = 30;
+        Console.WriteLine(AngleClock(hour, minutes));
     }
 }
