@@ -3,20 +3,34 @@ using System.Collections.Generic;
 
 class Program
 {
-    public static double AngleClock(int hour, int minutes)
+    public static string BestHand(int[] ranks, char[] suits)
     {
-        float h = (hour % 12 + (float)minutes / 60) * 30;
-        float m = minutes * 6;
+        string res = "High Card";
+        Dictionary<int, int> dict = new Dictionary<int, int>();
+        int flush = 1;
 
-        float angle = Math.Abs(h - m);
-        if (angle > 180) angle = 360 - angle;
+        dict.Add(ranks[0], 1);
+        for (int i = 1; i < ranks.Length; i++)
+        {
+            if (dict.ContainsKey(ranks[i]))
+            {
+                dict[ranks[i]]++;
+                if (dict[ranks[i]] == 2 && res != "Three of a Kind") res = "Pair";
+                if (dict[ranks[i]] == 3) res = "Three of a Kind";
+            }
+            else dict.Add(ranks[i], 1);
 
-        return angle;
+            if (suits[i] == suits[i - 1]) flush++;
+        }
+
+        if (flush == suits.Length) res = "Flush";
+
+        return res;
     }
     public static void Main(string[] args)
     {
-        int hour = 12;
-        int minutes = 30;
-        Console.WriteLine(AngleClock(hour, minutes));
+        int[] ranks = { 1, 1, 1, 2, 2 };
+        char[] suits = { 'a', 'b', 'c', 'a', 'd' };
+        Console.WriteLine(BestHand(ranks, suits));
     }
 }
