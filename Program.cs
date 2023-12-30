@@ -1,36 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 class Program
 {
-    public static string BestHand(int[] ranks, char[] suits)
+    public static int EqualPairs(int[][] grid)
     {
-        string res = "High Card";
-        Dictionary<int, int> dict = new Dictionary<int, int>();
-        int flush = 1;
-
-        dict.Add(ranks[0], 1);
-        for (int i = 1; i < ranks.Length; i++)
+        Dictionary<string, int> dict = new Dictionary<string, int>();
+        int cnt = 0;
+        for (int i = 0; i < grid.Length; i++)
         {
-            if (dict.ContainsKey(ranks[i]))
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < grid[i].Length; j++)
             {
-                dict[ranks[i]]++;
-                if (dict[ranks[i]] == 2 && res != "Three of a Kind") res = "Pair";
-                if (dict[ranks[i]] == 3) res = "Three of a Kind";
+                sb.Append(grid[i][j]);
             }
-            else dict.Add(ranks[i], 1);
-
-            if (suits[i] == suits[i - 1]) flush++;
+            if (dict.ContainsKey(sb.ToString())) dict[sb.ToString()]++;
+            else dict.Add(sb.ToString(), 1);
         }
 
-        if (flush == suits.Length) res = "Flush";
+        for (int i = 0; i < grid.Length; i++)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < grid[i].Length; j++)
+            {
+                sb.Append(grid[j][i]);
+            }
+            if (dict.ContainsKey(sb.ToString()))
+            {
+                dict[sb.ToString()]++;
+            }
+            else dict.Add(sb.ToString(), 1);
+        }
 
-        return res;
+        foreach (var item in dict)
+        {
+            if (item.Value > 1) cnt += item.Value - 1;
+        }
+
+        return cnt;
     }
+
     public static void Main(string[] args)
     {
-        int[] ranks = { 1, 1, 1, 2, 2 };
-        char[] suits = { 'a', 'b', 'c', 'a', 'd' };
-        Console.WriteLine(BestHand(ranks, suits));
+        int[][] grid = [[3, 1, 2, 2], [1, 4, 4, 5], [2, 4, 2, 2], [2, 4, 2, 2]];
+
+        EqualPairs(grid);
     }
 }
