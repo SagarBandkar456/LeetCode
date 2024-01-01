@@ -4,13 +4,6 @@ using System.Text;
 
 class Program
 {
-    public static bool IsPowerOfThree(int n)
-    {
-        if (n == 1) return true;
-        if (n % 3 != 0 && n == 0) return false;
-        return IsPowerOfThree(n / 3);
-    }
-
     public static bool IsPowerOfFour(int n)
     {
         if (n == 1) return true;
@@ -20,6 +13,6 @@ class Program
     public static void Main(string[] args)
     {
         int num = 27;
-        IsPowerOfThree(num);
+        IsPowerOfFour(num);
     }
 }
