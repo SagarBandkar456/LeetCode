@@ -4,27 +4,22 @@ using System.Text;
 
 class Program
 {
-    public static int SplitNum(int num)
+    public static bool IsPowerOfThree(int n)
     {
-        int res = 0;
-        char[] input = num.ToString().ToCharArray();
-        Array.Sort(input);
+        if (n == 1) return true;
+        if (n % 3 != 0 && n == 0) return false;
+        return IsPowerOfThree(n / 3);
+    }
 
-        string a = "";
-        string b = "";
-
-        for (int i = 0; i < input.Length; i++)
-        {
-            if (i % 2 == 0) a += input[i];
-            else b += input[i];
-        }
-
-        res = Convert.ToInt32(a) + Convert.ToInt32(b);
-        return res;
+    public static bool IsPowerOfFour(int n)
+    {
+        if (n == 1) return true;
+        if (n % 4 != 0 && n == 0) return false;
+        return IsPowerOfFour(n / 4);
     }
     public static void Main(string[] args)
     {
-        int num = 4325;
-        SplitNum(num);
+        int num = 27;
+        IsPowerOfThree(num);
     }
 }
