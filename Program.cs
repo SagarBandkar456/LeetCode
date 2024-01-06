@@ -4,14 +4,29 @@ using System.Text;
 
 class Program
 {
-    public static bool IsPowerOfTwo(int n)
+
+    public class ListNode
     {
-        if (n == 1) return true;
-        if (n == 0 || n % 2 != 0) return false;
-        return IsPowerOfTwo(n / 2);
+        public int val;
+        public ListNode next;
+        public ListNode(int val = 0, ListNode next = null)
+        {
+            this.val = val;
+            this.next = next;
+        }
+    }
+    public ListNode RemoveElements(ListNode head, int val)
+    {
+        if (head == null) return head;
+
+        head.next = RemoveElements(head.next, val);
+
+        if (head.val == val)
+            return head = head.next;
+        else return head;
     }
     public static void Main(string[] args)
     {
-        IsPowerOfTwo(6);
+
     }
 }
