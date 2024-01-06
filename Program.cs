@@ -4,15 +4,31 @@ using System.Text;
 
 class Program
 {
-    public static int Fib(int n)
+
+    public class ListNode
     {
-        if (n == 0) return 0;
-        if (n == 1) return 1;
-        return Fib(n - 1) + Fib(n - 2);
+        public int val;
+        public ListNode next;
+        public ListNode(int val = 0, ListNode next = null)
+        {
+            this.val = val;
+            this.next = next;
+        }
+    }
+    public static ListNode SwapPairs(ListNode head)
+    {
+        if (head == null || head.next == null) return head;
+
+        ListNode second = head.next;
+        ListNode third = second.next;
+
+        second.next = head;
+        head.next = SwapPairs(third);
+
+        return second;
     }
     public static void Main(string[] args)
     {
-        int num = 27;
-        Fib(num);
+
     }
 }
