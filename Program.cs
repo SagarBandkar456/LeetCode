@@ -5,29 +5,23 @@ using System.Text;
 
 class Program
 {
-    public static int MinFlips(int a, int b, int c)
+    public static bool CanJump(int[] nums)
     {
-        int flip = 0;
+        int reach = 0;
 
-        while (a >= 0 || b >= 0 || c >= 0)
+        for (int i = 0; i < nums.Length; i++)
         {
-            int bitA = a & 1;
-            int bitB = b & 1;
-            int bitC = c & 1;
+            if (i > reach) return false;
 
-            if (bitC == 1) flip++;
-            else
-            {
-                if (bitA == 0 && bitB == 0) flip++;
-            }
+            reach = Math.Max(reach, nums[i] + i);
         }
 
-        return flip;
+        return true;
     }
+
     public static void Main(string[] args)
     {
-        int a = 2, b = 6, c = 5;
-
-        MinFlips(a, b, c);
+        int[] nums = { 10, 15, 20 };
+        CanJump(nums);
     }
 }
