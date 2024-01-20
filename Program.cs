@@ -5,23 +5,27 @@ using System.Text;
 
 class Program
 {
-    public static bool CanJump(int[] nums)
+    static int[] dp = new int[1001];
+    public static int Solve(int[] cost, int n)
     {
-        int reach = 0;
+        if (dp[n] != -1) return dp[n];
+        if (n <= 1) return dp[n] = 0;
 
-        for (int i = 0; i < nums.Length; i++)
+        return dp[n] = Math.Min(Solve(cost, n - 1) + cost[n - 1], Solve(cost, n - 2) + cost[n - 2]);
+    }
+    public static int MinCostClimbingStairs(int[] cost)
+    {
+
+        for (int i = 0; i < dp.Length; i++)
         {
-            if (i > reach) return false;
-
-            reach = Math.Max(reach, nums[i] + i);
+            dp[i] = -1;
         }
-
-        return true;
+        return Solve(cost, cost.Length);
     }
 
     public static void Main(string[] args)
     {
-        int[] nums = { 10, 15, 20 };
-        CanJump(nums);
+        int[] cost = [10, 15, 20]
+        MinCostClimbingStairs(cost);
     }
 }
