@@ -5,27 +5,32 @@ using System.Text;
 
 class Program
 {
-    static int[] dp = new int[1001];
-    public static int Solve(int[] cost, int n)
+    public static int MinimumCost(int[] nums)
     {
-        if (dp[n] != -1) return dp[n];
-        if (n <= 1) return dp[n] = 0;
+        int first = nums[0];
 
-        return dp[n] = Math.Min(Solve(cost, n - 1) + cost[n - 1], Solve(cost, n - 2) + cost[n - 2]);
-    }
-    public static int MinCostClimbingStairs(int[] cost)
-    {
+        int second = Int32.MaxValue;
+        int third = Int32.MaxValue;
 
-        for (int i = 0; i < dp.Length; i++)
+        for (int i = 1; i < nums.Length; i++)
         {
-            dp[i] = -1;
+            if (nums[i] < second)
+            {
+                third = second;
+                second = nums[i];
+                continue;
+            }
+            if (nums[i] < third)
+            {
+                second = second;
+                third = nums[i];
+            }
         }
-        return Solve(cost, cost.Length);
+        return first + second + third;
     }
-
     public static void Main(string[] args)
     {
-        int[] cost = [10, 15, 20]
-        MinCostClimbingStairs(cost);
+        int[] cost = [1, 2, 3, 12];
+        Console.WriteLine(MinimumCost(cost));
     }
 }
