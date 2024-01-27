@@ -5,32 +5,30 @@ using System.Text;
 
 class Program
 {
-    public static int MinimumCost(int[] nums)
+    public static int[] CountBits(int n)
     {
-        int first = nums[0];
-
-        int second = Int32.MaxValue;
-        int third = Int32.MaxValue;
-
-        for (int i = 1; i < nums.Length; i++)
+        int[] res = new int[n + 1];
+        for (int i = 0; i <= n; i++)
         {
-            if (nums[i] < second)
-            {
-                third = second;
-                second = nums[i];
-                continue;
-            }
-            if (nums[i] < third)
-            {
-                second = second;
-                third = nums[i];
-            }
+            res[i] = CountSetBits(i);
         }
-        return first + second + third;
+        return res;
+    }
+
+    static int CountSetBits(int n)
+    {
+        int count = 0;
+        while (n > 0)
+        {
+            n = n & (n - 1);
+            count++;
+        }
+
+        return count;
     }
     public static void Main(string[] args)
     {
-        int[] cost = [1, 2, 3, 12];
-        Console.WriteLine(MinimumCost(cost));
+        int n = 2;
+        Console.WriteLine(CountBits(n));
     }
 }
