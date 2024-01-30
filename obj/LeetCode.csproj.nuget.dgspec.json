@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/home/sagarbandkar/Sagar/Code/LeetCode/LeetCode.csproj": {}
+    "D:\\Code\\LeetCode\\LeetCode.csproj": {}
   },
   "projects": {
-    "/home/sagarbandkar/Sagar/Code/LeetCode/LeetCode.csproj": {
+    "D:\\Code\\LeetCode\\LeetCode.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/sagarbandkar/Sagar/Code/LeetCode/LeetCode.csproj",
+        "projectUniqueName": "D:\\Code\\LeetCode\\LeetCode.csproj",
         "projectName": "LeetCode",
-        "projectPath": "/home/sagarbandkar/Sagar/Code/LeetCode/LeetCode.csproj",
-        "packagesPath": "/home/sagarbandkar/.nuget/packages/",
-        "outputPath": "/home/sagarbandkar/Sagar/Code/LeetCode/obj/",
+        "projectPath": "D:\\Code\\LeetCode\\LeetCode.csproj",
+        "packagesPath": "C:\\Users\\Sagar\\.nuget\\packages\\",
+        "outputPath": "D:\\Code\\LeetCode\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/sagarbandkar/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Sagar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -53,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
