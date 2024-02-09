@@ -5,49 +5,38 @@ using System.Text;
 
 class Program
 {
-    static int[,] dp = new int[501, 501];
-    static int Solve(int m, int n, string word1, string word2)
+    public static int MaxProduct(int[] a)
     {
-        if (m == word1.Length) return word2.Length - n;
+        int size = a.Length;
+        int max_so_far = int.MinValue, max_ending_here = 1;
 
-        if (n == word2.Length) return word1.Length - m;
-
-        if (dp[m, n] != -1) return dp[m, n];
-
-        int res = 0;
-        if (word1[m] == word2[n])
+        for (int i = 0; i < size; i++)
         {
-            return dp[m, n] = Solve(m + 1, n + 1, word1, word2);
-        }
-        else
-        {
-            //Insert
-            int insert = 1 + Solve(m, n + 1, word1, word2);
-            //Delete
-            int delete = 1 + Solve(m + 1, n, word1, word2);
-            //Replace
-            int replace = 1 + Solve(m + 1, n + 1, word1, word2);
+            max_ending_here = max_ending_here * a[i];
 
-            res = Math.Min(insert, Math.Min(delete, replace));
+            if (max_so_far < max_ending_here)
+                max_so_far = max_ending_here;
+
+            if (max_ending_here == 0)
+                max_ending_here = 1;
+
         }
 
-        return dp[m, n] = res;
-    }
-    public static int MinDistance(string word1, string word2)
-    {
-        return Solve(0, 0, word1, word2);
+        max_ending_here = 1;
+        for (int i = a.Length - 1; i >= 0; i--)
+        {
+            max_ending_here *= a[i];
+
+            max_so_far = Math.Max(max_ending_here, max_so_far);
+            if (max_ending_here == 0)
+                max_ending_here = 1;
+        }
+
+        return max_so_far;
     }
     public static void Main(string[] args)
     {
-        string word1 = "horse", word2 = "ros";
-
-        for (int i = 0; i < 501; i++)
-        {
-            for (int j = 0; j < 501; j++)
-            {
-                dp[i, j] = -1;
-            }
-        }
-        Console.WriteLine(MinDistance(word1, word2));
+        int[] nums = { 2, 3, -2, 4 };
+        Console.WriteLine(MaxProduct(nums));
     }
 }
