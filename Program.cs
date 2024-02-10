@@ -5,38 +5,36 @@ using System.Text;
 
 class Program
 {
-    public static int MaxProduct(int[] a)
+    static int[] dp = new int[401];
+    static int Solve(int[] nums, int n)
     {
-        int size = a.Length;
-        int max_so_far = int.MinValue, max_ending_here = 1;
-
-        for (int i = 0; i < size; i++)
+        if (n == 0)
         {
-            max_ending_here = max_ending_here * a[i];
-
-            if (max_so_far < max_ending_here)
-                max_so_far = max_ending_here;
-
-            if (max_ending_here == 0)
-                max_ending_here = 1;
-
+            return nums[0];
+        }
+        else if (n == 1)
+        {
+            return Math.Max(nums[0], nums[1]);
         }
 
-        max_ending_here = 1;
-        for (int i = a.Length - 1; i >= 0; i--)
-        {
-            max_ending_here *= a[i];
+        if (dp[n] != -1) return dp[n];
 
-            max_so_far = Math.Max(max_ending_here, max_so_far);
-            if (max_ending_here == 0)
-                max_ending_here = 1;
-        }
-
-        return max_so_far;
+        return dp[n] = Math.Max(nums[n] + Solve(nums, n - 2), Solve(nums, n - 1));
     }
+    public static int Rob(int[] nums)
+    {
+        int n = nums.Length;
+
+        for (int i = 0; i < 401; i++)
+        {
+            dp[i] = -1;
+        }
+        return Solve(nums, n - 1);
+    }
+
     public static void Main(string[] args)
     {
-        int[] nums = { 2, 3, -2, 4 };
-        Console.WriteLine(MaxProduct(nums));
+        int[] nums = { 1, 2, 3, 1 };
+        Console.WriteLine(Rob(nums));
     }
 }
