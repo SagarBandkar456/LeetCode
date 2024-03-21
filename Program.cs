@@ -7,21 +7,8 @@ class Program
 {
     public static void Main(string[] args)
     {
-        int count = 1;
-
-        int n = 5;
-        for (int i = 1; i <= n; i++)
-        {
-            int sum = i;
-            for (int j = i + 1; j <= n; j++)
-            {
-                sum += j;
-                if (sum > n) break;
-                else if (sum == n) count++;
-            }
-        }
-
-
-        //Console.WriteLine(CountNegative.Count(nums));
+        ReorderPowerOf2 reorderPowerOf2 = new ReorderPowerOf2();
+        Console.WriteLine(reorderPowerOf2.ReorderCount(10));
+        Console.ReadLine();
     }
 }
