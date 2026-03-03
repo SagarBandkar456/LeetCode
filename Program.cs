@@ -7,8 +7,11 @@ class Program
 {
     public static void Main(string[] args)
     {
-        ReorderPowerOf2 reorderPowerOf2 = new ReorderPowerOf2();
-        Console.WriteLine(reorderPowerOf2.ReorderCount(10));
+        Trie trie = new Trie();
+        string[] arr = { "a", "ap", "app", "appl", "apple", "apply" };
+        foreach (string s in arr) { trie.Insert(s); }
+
+        trie.HasAllPrefix("apple");
         Console.ReadLine();
     }
 }
